@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Wardrobe | Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>LUXE <span>WARDROBE</span></h1>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" data-category="dresses">Dresses</a></li>
+                    <li><a href="index.html" data-category="tops">Tops</a></li>
+                    <li><a href="index.html" data-category="bottoms">Bottoms</a></li>
+                    <li><a href="index.html" data-category="outerwear">Outerwear</a></li>
+                    <li><a href="index.html" data-category="lingerie">Lingerie</a></li>
+                    <li><a href="index.html" data-category="underwear">Underwear</a></li>
+                    <li><a href="index.html" data-category="beachwear">Beach Wear</a></li>
+                    <li><a href="index.html" data-category="accessories">Accessories</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="cart-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span id="cartCount" class="cart-count">0</span></button>
+                <button class="user-btn" id="userBtn"><i class="fas fa-user"></i></button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="cart-main">
+        <div class="container">
+            <div class="cart-header">
+                <h2>Shopping Cart</h2>
+                <div class="gold-divider small"></div>
+                <p id="cartMessage" class="cart-message"></p>
+            </div>
+            
+            <div class="cart-layout">
+                <div class="cart-items-section">
+                    <div class="cart-items-header">
+                        <h3>Your Items</h3>
+                        <button id="clearCartBtn" class="clear-cart-btn">Clear Cart</button>
+                    </div>
+                    <div class="cart-items" id="cartItems">
+                        <!-- Cart items will be injected here -->
+                    </div>
+                </div>
+                
+                <div class="cart-summary-section">
+                    <div class="cart-summary" id="cartSummary">
+                        <!-- Cart summary will be injected here -->
+                    </div>
+                    
+                    <!-- Promo Code Section -->
+                    <div class="promo-section">
+                        <h4>Promo Code</h4>
+                        <div class="promo-input-group">
+                            <input type="text" id="promoCode" placeholder="Enter promo code">
+                            <button id="applyPromoBtn">Apply</button>
+                        </div>
+                        <p id="promoMessage" class="promo-message"></p>
+                        <div class="available-promos">
+                            <small>Available: WELCOME10 (10% off) | LUXE20 (20% off $100+) | FREESHIP (Free shipping $50+)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Shipping Options -->
+                    <div class="shipping-section">
+                        <h4>Shipping Method</h4>
+                        <div class="shipping-options">
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="standard" checked>
+                                <span>Standard Shipping (3-5 days) - $5.99</span>
+                            </label>
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="express">
+                                <span>Express Shipping (1-2 days) - $12.99</span>
+                            </label>
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="overnight">
+                                <span>Overnight Shipping - $24.99</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-actions">
+                <a href="index.html" class="continue-shopping"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+                <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Complete Your Order</h2>
+                <div class="gold-divider small"></div>
+            </div>
+            <form id="checkoutForm">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="checkoutName" required placeholder="Jane Doe">
+                    </div>
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" id="checkoutEmail" required placeholder="jane@example.com">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Shipping Address</label>
+                    <input type="text" id="checkoutAddress" required placeholder="123 Fashion Street, City, State 12345">
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>City</label>
+                        <input type="text" id="checkoutCity" required placeholder="New York">
+                    </div>
+                    <div class="input-group">
+                        <label>Zip Code</label>
+                        <input type="text" id="checkoutZip" required placeholder="10001">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Payment Method</label>
+                    <select id="checkoutPayment" required>
+                        <option value="">Select payment method</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="apple">Apple Pay</option>
+                    </select>
+                </div>
+                <div class="order-summary" id="orderSummary">
+                    <!-- Order summary will be injected here -->
+                </div>
+                <button type="submit" class="place-order-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>LUXE WARDROBE</h4>
+                <p>Complete women's fashion destination from everyday essentials to intimate wear.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="index.html" data-category="dresses">Dresses</a></li>
+                    <li><a href="index.html" data-category="tops">Tops</a></li>
+                    <li><a href="index.html" data-category="bottoms">Bottoms</a></li>
+                    <li><a href="index.html" data-category="outerwear">Outerwear</a></li>
+                    <li><a href="index.html" data-category="lingerie">Lingerie</a></li>
+                    <li><a href="index.html" data-category="underwear">Underwear</a></li>
+                    <li><a href="index.html" data-category="beachwear">Beach Wear</a></li>
+                    <li><a href="index.html" data-category="accessories">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Get 10% off your first order</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Luxe Wardrobe. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Cart State
+        let currentShippingMethod = 'standard';
+        let appliedPromo = null;
+        
+        const shippingRates = {
+            standard: 5.99,
+            express: 12.99,
+            overnight: 24.99
+        };
+        
+        const promoCodes = {
+            'WELCOME10': { type: 'percentage', value: 10, minOrder: 0 },
+            'LUXE20': { type: 'percentage', value: 20, minOrder: 100 },
+            'FREESHIP': { type: 'free_shipping', value: 0, minOrder: 50 }
+        };
+
+        // Check authentication
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Cart functions
+        function getCart() {
+            const cart = localStorage.getItem('cart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountElements = document.querySelectorAll('#cartCount');
+            cartCountElements.forEach(el => {
+                if (el) el.textContent = totalItems;
+            });
+        }
+
+        // FIXED: Update quantity function
+        function updateQuantity(itemId, size, change) {
+            const cart = getCart();
+            const itemIndex = cart.findIndex(i => i.id === itemId && i.size === size);
+            
+            if (itemIndex !== -1) {
+                const item = cart[itemIndex];
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                }
+                
+                saveCart(cart);
+                
+                // Show message
+                const messageEl = document.getElementById('cartMessage');
+                if (messageEl) {
+                    messageEl.textContent = change > 0 ? 'Quantity increased' : 'Quantity decreased';
+                    messageEl.style.color = '#d4af37';
+                    setTimeout(() => {
+                        messageEl.textContent = '';
+                    }, 1500);
+                }
+            }
+        }
+
+        // FIXED: Remove item function
+        function removeItem(itemId, size) {
+            let cart = getCart();
+            cart = cart.filter(item => !(item.id === itemId && item.size === size));
+            saveCart(cart);
+            
+            // Show message
+            const messageEl = document.getElementById('cartMessage');
+            if (messageEl) {
+                messageEl.textContent = 'Item removed from cart';
+                messageEl.style.color = '#d4af37';
+                setTimeout(() => {
+                    messageEl.textContent = '';
+                }, 2000);
+            }
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your entire cart?')) {
+                saveCart([]);
+                const messageEl = document.getElementById('cartMessage');
+                if (messageEl) {
+                    messageEl.textContent = 'Cart cleared successfully';
+                    messageEl.style.color = '#d4af37';
+                    setTimeout(() => {
+                        messageEl.textContent = '';
+                    }, 2000);
+                }
+            }
+        }
+
+        function calculateSubtotal(cart) {
+            return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        }
+
+        function calculateDiscount(subtotal) {
+            if (!appliedPromo) return 0;
+            
+            const promo = promoCodes[appliedPromo];
+            if (!promo) return 0;
+            
+            if (subtotal < promo.minOrder) return 0;
+            
+            if (promo.type === 'percentage') {
+                return (subtotal * promo.value) / 100;
+            }
+            return 0;
+        }
+
+        function calculateShipping(subtotal, discount) {
+            const subtotalAfterDiscount = subtotal - discount;
+            
+            // Free shipping if FREESHIP promo code applied
+            if (appliedPromo === 'FREESHIP' && subtotal >= promoCodes.FREESHIP.minOrder) {
+                return 0;
+            }
+            
+            // Free shipping for orders over $100
+            if (subtotalAfterDiscount >= 100) {
+                return 0;
+            }
+            
+            return shippingRates[currentShippingMethod];
+        }
+
+        function calculateTotal(subtotal, discount, shipping) {
+            return subtotal - discount + shipping;
+        }
+
+        function applyPromoCode(code) {
+            const promo = promoCodes[code.toUpperCase()];
+            
+            if (!promo) {
+                return { success: false, message: 'Invalid promo code' };
+            }
+            
+            const cart = getCart();
+            const subtotal = calculateSubtotal(cart);
+            
+            if (subtotal < promo.minOrder) {
+                return { success: false, message: `Minimum order of $${promo.minOrder} required for this code` };
+            }
+            
+            appliedPromo = code.toUpperCase();
+            return { success: true, message: 'Promo code applied successfully!' };
+        }
+
+        function removePromo() {
+            appliedPromo = null;
+            renderCart();
+            const promoMessage = document.getElementById('promoMessage');
+            if (promoMessage) {
+                promoMessage.textContent = 'Promo code removed';
+                promoMessage.style.color = '#d4af37';
+                setTimeout(() => {
+                    promoMessage.textContent = '';
+                }, 2000);
+            }
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartSummaryContainer = document.getElementById('cartSummary');
+            const clearCartBtn = document.getElementById('clearCartBtn');
+            
+            if (!cartItemsContainer || !cartSummaryContainer) return;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <p>Your cart is empty</p>
+                        <a href="index.html" class="continue-shopping" style="display: inline-block; margin-top: 20px;">Start Shopping</a>
+                    </div>
+                `;
+                cartSummaryContainer.innerHTML = '';
+                if (clearCartBtn) clearCartBtn.style.display = 'none';
+                return;
+            }
+            
+            if (clearCartBtn) clearCartBtn.style.display = 'block';
+            
+            // Render cart items with proper onclick handlers
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="cart-item" data-id="${item.id}" data-size="${item.size}">
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                        <p class="cart-item-size">Size: ${item.size}</p>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="qty-decrease" data-id="${item.id}" data-size="${item.size}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-increase" data-id="${item.id}" data-size="${item.size}">+</button>
+                    </div>
+                    <div class="cart-item-total">
+                        <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                    <button class="remove-item" data-id="${item.id}" data-size="${item.size}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            `).join('');
+            
+            // Add event listeners to dynamically created buttons
+            document.querySelectorAll('.qty-decrease').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    const size = btn.getAttribute('data-size');
+                    updateQuantity(id, size, -1);
+                });
+            });
+            
+            document.querySelectorAll('.qty-increase').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    const size = btn.getAttribute('data-size');
+                    updateQuantity(id, size, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    const size = btn.getAttribute('data-size');
+                    removeItem(id, size);
+                });
+            });
+            
+            // Calculate totals
+            const subtotal = calculateSubtotal(cart);
+            const discount = calculateDiscount(subtotal);
+            const shipping = calculateShipping(subtotal, discount);
+            const total = calculateTotal(subtotal, discount, shipping);
+            
+            // Render summary
+            cartSummaryContainer.innerHTML = `
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>$${subtotal.toFixed(2)}</span>
+                    </div>
+                    ${discount > 0 ? `
+                        <div class="summary-row discount">
+                            <span>Discount ${appliedPromo ? `(${appliedPromo})` : ''}</span>
+                            <span class="discount-amount">-$${discount.toFixed(2)}</span>
+                            <button class="remove-promo" onclick="removePromo()">✕</button>
+                        </div>
+                    ` : ''}
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>${shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Handle shipping method change
+        function handleShippingChange() {
+            const selected = document.querySelector('input[name="shipping"]:checked');
+            if (selected) {
+                currentShippingMethod = selected.value;
+                renderCart();
+            }
+        }
+
+        // Handle promo code application
+        function handlePromoApply() {
+            const promoInput = document.getElementById('promoCode');
+            const promoMessage = document.getElementById('promoMessage');
+            const code = promoInput.value.trim();
+            
+            if (!code) {
+                promoMessage.textContent = 'Please enter a promo code';
+                promoMessage.style.color = '#ff4444';
+                return;
+            }
+            
+            const result = applyPromoCode(code);
+            promoMessage.textContent = result.message;
+            promoMessage.style.color = result.success ? '#d4af37' : '#ff4444';
+            
+            if (result.success) {
+                promoInput.value = '';
+                renderCart();
+                setTimeout(() => {
+                    promoMessage.textContent = '';
+                }, 3000);
+            }
+        }
+
+        // Show checkout modal
+        function showCheckoutModal() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Your cart is empty. Add some items first!');
+                return;
+            }
+            
+            const subtotal = calculateSubtotal(cart);
+            const discount = calculateDiscount(subtotal);
+            const shipping = calculateShipping(subtotal, discount);
+            const total = calculateTotal(subtotal, discount, shipping);
+            
+            const orderSummary = document.getElementById('orderSummary');
+            if (orderSummary) {
+                orderSummary.innerHTML = `
+                    <div class="order-summary-details">
+                        <h4>Order Summary</h4>
+                        <div class="summary-row">
+                            <span>Items (${cart.reduce((sum, i) => sum + i.quantity, 0)})</span>
+                            <span>$${subtotal.toFixed(2)}</span>
+                        </div>
+                        ${discount > 0 ? `
+                            <div class="summary-row">
+                                <span>Discount</span>
+                                <span>-$${discount.toFixed(2)}</span>
+                            </div>
+                        ` : ''}
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span>${shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span>$${total.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            const modal = document.getElementById('checkoutModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        // Handle checkout submission
+        function handleCheckout(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('checkoutName').value;
+            const email = document.getElementById('checkoutEmail').value;
+            const address = document.getElementById('checkoutAddress').value;
+            const city = document.getElementById('checkoutCity').value;
+            const zip = document.getElementById('checkoutZip').value;
+            const payment = document.getElementById('checkoutPayment').value;
+            
+            if (!name || !email || !address || !city || !zip || !payment) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const cart = getCart();
+            const subtotal = calculateSubtotal(cart);
+            const discount = calculateDiscount(subtotal);
+            const shipping = calculateShipping(subtotal, discount);
+            const total = calculateTotal(subtotal, discount, shipping);
+            
+            // Create order object
+            const order = {
+                orderNumber: 'ORD-' + Math.random().toString(36).substr(2, 8).toUpperCase(),
+                date: new Date().toLocaleString(),
+                customer: { name, email, address: `${address}, ${city}, ${zip}` },
+                items: cart,
+                subtotal: subtotal,
+                discount: discount,
+                shipping: shipping,
+                total: total,
+                paymentMethod: payment,
+                promoCode: appliedPromo
+            };
+            
+            // Save order to localStorage
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Clear cart and close modal
+            saveCart([]);
+            const modal = document.getElementById('checkoutModal');
+            if (modal) modal.style.display = 'none';
+            
+            // Show success message
+            alert(`Thank you for your order!\n\nOrder #: ${order.orderNumber}\nTotal: $${total.toFixed(2)}\n\nYou will receive a confirmation email at ${email}`);
+            
+            // Reset form
+            document.getElementById('checkoutForm').reset();
+            appliedPromo = null;
+            renderCart();
+        }
+
+        // Display user info
+        function displayUserInfo() {
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            if (userName && userEmail !== 'guest@luxe.com') {
+                const userBtn = document.getElementById('userBtn');
+                if (userBtn) {
+                    userBtn.innerHTML = `<i class="fas fa-user"></i><span class="user-name">${userName.split(' ')[0]}</span>`;
+                }
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            renderCart();
+            updateCartCount();
+            displayUserInfo();
+            
+            // Clear cart button
+            const clearCartBtn = document.getElementById('clearCartBtn');
+            if (clearCartBtn) clearCartBtn.addEventListener('click', clearCart);
+            
+            // Shipping options
+            document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+                radio.addEventListener('change', handleShippingChange);
+            });
+            
+            // Apply promo button
+            const applyPromoBtn = document.getElementById('applyPromoBtn');
+            if (applyPromoBtn) applyPromoBtn.addEventListener('click', handlePromoApply);
+            
+            // Checkout button
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) checkoutBtn.addEventListener('click', showCheckoutModal);
+            
+            // Cart button
+            const cartBtn = document.getElementById('cartBtn');
+            if (cartBtn) cartBtn.addEventListener('click', () => {
+                window.location.href = 'cart.html';
+            });
+            
+            // User button
+            const userBtn = document.getElementById('userBtn');
+            if (userBtn) userBtn.addEventListener('click', () => {
+                const userEmail = localStorage.getItem('userEmail');
+                if (confirm(`Logged in as: ${userEmail}\n\nLogout?`)) {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userName');
+                    localStorage.removeItem('cart');
+                    localStorage.removeItem('orders');
+                    window.location.href = 'login.html';
+                }
+            });
+            
+            // Modal close
+            const modal = document.getElementById('checkoutModal');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    if (modal) modal.style.display = 'none';
+                });
+            }
+            
+            if (window) {
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        if (modal) modal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Checkout form submission
+            const checkoutForm = document.getElementById('checkoutForm');
+            if (checkoutForm) checkoutForm.addEventListener('submit', handleCheckout);
+            
+            // Newsletter form
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const emailInput = e.target.querySelector('input');
+                    if (emailInput && emailInput.value) {
+                        alert(`Thanks for subscribing! 10% off code sent to ${emailInput.value}`);
+                        emailInput.value = '';
+                    }
+                });
+            }
+        });
+        
+        // Make functions global for onclick handlers
+        window.updateQuantity = updateQuantity;
+        window.removeItem = removeItem;
+        window.removePromo = removePromo;
+    </script>
+</body>
+</html>
