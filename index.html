@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Wardrobe | Women's Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>LUXE <span>WARDROBE</span></h1>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active" data-category="all">All</a></li>
+                    <li><a href="#" data-category="dresses">Dresses</a></li>
+                    <li><a href="#" data-category="tops">Tops</a></li>
+                    <li><a href="#" data-category="bottoms">Bottoms</a></li>
+                    <li><a href="#" data-category="outerwear">Outerwear</a></li>
+                    <li><a href="#" data-category="lingerie">Lingerie</a></li>
+                    <li><a href="#" data-category="underwear">Underwear</a></li>
+                    <li><a href="#" data-category="beachwear">Beach Wear</a></li>
+                    <li><a href="#" data-category="accessories">Accessories</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                <button class="cart-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span id="cartCount" class="cart-count">0</span></button>
+                <button class="user-btn" id="userBtn"><i class="fas fa-user"></i></button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>ELEVATE YOUR STYLE</h2>
+                <div class="gold-line"></div>
+                <p>Discover our complete collection of women's fashion from everyday essentials to intimate wear</p>
+                <button class="shop-now-btn">Shop Now</button>
+            </div>
+        </section>
+        
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label>Size:</label>
+                        <select id="sizeFilter">
+                            <option value="all">All Sizes</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                     <label>Price Range (₱):</label>
+                        <select id="priceFilter">
+                            <option value="all">All Prices</option>
+                            <option value="0-1500">Under ₱1,500</option>
+                            <option value="1500-3000">₱1,500 - ₱3,000</option>
+                            <option value="3000-5000">₱3,000 - ₱5,000</option>
+                            <option value="5000-8000">₱5,000 - ₱8,000</option>
+                            <option value="8000-15000">₱8,000 - ₱15,000</option>
+                            <option value="15000-50000">₱15,000+</option>
+                        </select>
+                    </div>
+                    
+                    <button id="clearFilters" class="clear-filters-btn">Clear Filters</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="featured-section">
+            <div class="container">
+                <div class="section-header">
+                    <h3>OUR COLLECTION</h3>
+                    <div class="gold-divider small"></div>
+                    <p id="productCount">Showing 32 products</p>
+                </div>
+                
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be injected here -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="categories-section">
+            <div class="container">
+                <div class="section-header">
+                    <h3>SHOP BY CATEGORY</h3>
+                    <div class="gold-divider small"></div>
+                </div>
+                
+                <div class="categories-grid">
+                    <div class="category-card" data-category="dresses">
+                        <img src="maxi_dress.png" alt="Dresses">
+                        <div class="category-overlay">
+                            <h4>Dresses</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="tops">
+                        <img src="cotton_tsirt.png" alt="Tops">
+                        <div class="category-overlay">
+                            <h4>Tops</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="bottoms">
+                        <img src="maxi_skirt.png" alt="Bottoms">
+                        <div class="category-overlay">
+                            <h4>Bottoms</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="outerwear">
+                        <img src="denim_jacket.png" alt="Outerwear">
+                        <div class="category-overlay">
+                            <h4>Outerwear</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="lingerie">
+                        <img src="lace_teddy.png" alt="Lingerie">
+                        <div class="category-overlay">
+                            <h4>Lingerie</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="underwear">
+                        <img src="seamless_hipster.png" alt="Underwear">
+                        <div class="category-overlay">
+                            <h4>Underwear</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="beachwear">
+                        <img src="high_waist_bikini.png" alt="Beach Wear">
+                        <div class="category-overlay">
+                            <h4>Beach Wear</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="accessories">
+                        <img src="designer_belt.png" alt="Accessories">
+                        <div class="category-overlay">
+                            <h4>Accessories</h4>
+                            <button class="category-btn">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>LUXE WARDROBE</h4>
+                <p>Complete women's fashion destination from everyday essentials to intimate wear.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#" data-category="dresses">Dresses</a></li>
+                    <li><a href="#" data-category="tops">Tops</a></li>
+                    <li><a href="#" data-category="bottoms">Bottoms</a></li>
+                    <li><a href="#" data-category="outerwear">Outerwear</a></li>
+                    <li><a href="#" data-category="lingerie">Lingerie</a></li>
+                    <li><a href="#" data-category="underwear">Underwear</a></li>
+                    <li><a href="#" data-category="beachwear">Beach Wear</a></li>
+                    <li><a href="#" data-category="accessories">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Get 10% off your first order</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Luxe Wardrobe. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Complete Product Data - All Women's Categories
+        const products = [
+            // Dresses Collection
+            {
+                id: 1,
+                name: "Silk Midi Dress",
+                price: 89.99,
+                image: "silk_midi_dress.png",
+                category: "dresses",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Elegant silk dress perfect for any occasion"
+            },
+            {
+                id: 2,
+                name: "Cocktail Dress",
+                price: 159.99,
+                image: "Screenshot 2026-03-27 102620.png",
+                category: "dresses",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Stunning cocktail dress for special events"
+            },
+            {
+                id: 3,
+                name: "Maxi Dress",
+                price: 79.99,
+                image: "maxi_dress.png",
+                category: "dresses",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Flowing maxi dress for effortless elegance"
+            },
+            {
+                id: 4,
+                name: "Bodycon Dress",
+                price: 69.99,
+                image: "bodycon.png",
+                category: "dresses",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Figure-hugging bodycon dress"
+            },
+            
+            // Tops Collection
+            {
+                id: 5,
+                name: "Cashmere Sweater",
+                price: 129.99,
+                image: "sweater.png",
+                category: "tops",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Luxurious cashmere for ultimate comfort"
+            },
+            {
+                id: 6,
+                name: "Satin Blouse",
+                price: 69.99,
+                image: "satin_blouse.png",
+                category: "tops",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Silky satin blouse for elegant looks"
+            },
+            {
+                id: 7,
+                name: "Silk Camisole",
+                price: 49.99,
+                image: "silk_camisole.png",
+                category: "tops",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Luxurious silk camisole"
+            },
+            {
+                id: 8,
+                name: "Cotton T-Shirt",
+                price: 29.99,
+                image: "cotton_tsirt.png",
+                category: "tops",
+                sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+                description: "Soft cotton essential tee"
+            },
+            
+            // Bottoms Collection
+            {
+                id: 9,
+                name: "High-Waist Trousers",
+                price: 79.99,
+                image: "High-Waist.png",
+                category: "bottoms",
+                sizes: ["XS", "S", "M", "L", "XL"],
+                description: "Tailored trousers for a perfect fit"
+            },
+            {
+                id: 10,
+                name: "Maxi Skirt",
+                price: 59.99,
+                image: "maxi_skirt.png",
+                category: "bottoms",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Flowing maxi skirt for effortless style"
+            },
+            {
+                id: 11,
+                name: "Denim Jeans",
+                price: 89.99,
+                image: "denim_jeans.png",
+                category: "bottoms",
+                sizes: ["XS", "S", "M", "L", "XL"],
+                description: "Classic denim jeans"
+            },
+            {
+                id: 12,
+                name: "Pleated Skirt",
+                price: 54.99,
+                image: "pleated_skirt.png",
+                category: "bottoms",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Elegant pleated skirt"
+            },
+            
+            // Outerwear Collection
+            {
+                id: 13,
+                name: "Wool Blend Coat",
+                price: 199.99,
+                image: "wool_blend.png",
+                category: "outerwear",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Classic wool coat for cold days"
+            },
+            {
+                id: 14,
+                name: "Leather Jacket",
+                price: 249.99,
+                image: "leather.png",
+                category: "outerwear",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Edgy leather jacket for bold statements"
+            },
+            {
+                id: 15,
+                name: "Knit Cardigan",
+                price: 89.99,
+                image: "cardigan.png",
+                category: "outerwear",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Cozy knit cardigan for everyday wear"
+            },
+            {
+                id: 16,
+                name: "Denim Jacket",
+                price: 79.99,
+                image: "denim_jacket.png",
+                category: "outerwear",
+                sizes: ["XS", "S", "M", "L", "XL"],
+                description: "Classic denim jacket"
+            },
+            
+            // Lingerie Collection
+            {
+                id: 17,
+                name: "Lace Teddy Set",
+                price: 59.99,
+                image: "lace_teddy.png",
+                category: "lingerie",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Elegant lace teddy with adjustable straps"
+            },
+            {
+                id: 18,
+                name: "Silk Babydoll",
+                price: 79.99,
+                image: "silk_babydoll.png",
+                category: "lingerie",
+                sizes: ["S", "M", "L"],
+                description: "Luxurious silk babydoll with lace trim"
+            },
+            {
+                id: 19,
+                name: "Bralette & Thong Set",
+                price: 45.99,
+                image: "sexy_lace.png",
+                category: "lingerie",
+                sizes: ["XS", "S", "M", "L", "XL"],
+                description: "Comfortable lace bralette with matching thong"
+            },
+            {
+                id: 20,
+                name: "Corset Bodysuit",
+                price: 89.99,
+                image: "corset.png",
+                category: "lingerie",
+                sizes: ["S", "M", "L"],
+                description: "Structured corset bodysuit with boning"
+            },
+            
+            // Underwear Collection
+            {
+                id: 21,
+                name: "Cotton Bikini Set",
+                price: 24.99,
+                image: "cotton_bikini.png",
+                category: "underwear",
+                sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+                description: "Soft cotton bikini set, pack of 3"
+            },
+            {
+                id: 22,
+                name: "Seamless Hipster",
+                price: 19.99,
+                image: "seamless_hipster.png",
+                category: "underwear",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Invisible seamless hipster underwear"
+            },
+            {
+                id: 23,
+                name: "Lace Cheeky Panties",
+                price: 29.99,
+                image: "lace_panty.png",
+                category: "underwear",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Delicate lace cheeky panties"
+            },
+            {
+                id: 24,
+                name: "High-Waist Cotton Brief",
+                price: 27.99,
+                image: "high_waist_panty.png",
+                category: "underwear",
+                sizes: ["S", "M", "L", "XL", "XXL"],
+                description: "Comfortable high-waist cotton briefs"
+            },
+            
+            // Beach Wear Collection
+            {
+                id: 25,
+                name: "Triangle Bikini Set",
+                price: 49.99,
+                image: "triangle_bikini.png",
+                category: "beachwear",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Classic triangle bikini with adjustable straps"
+            },
+            {
+                id: 26,
+                name: "High-Waist Bikini",
+                price: 59.99,
+                image: "high_waist_bikini.png",
+                category: "beachwear",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Retro high-waist bikini set"
+            },
+            {
+                id: 27,
+                name: "One-Piece Swimsuit",
+                price: 79.99,
+                image: "one_piece.png",
+                category: "beachwear",
+                sizes: ["S", "M", "L", "XL"],
+                description: "Elegant one-piece with tummy control"
+            },
+            {
+                id: 28,
+                name: "Crochet Bikini",
+                price: 69.99,
+                image: "crochet_bikini.png",
+                category: "beachwear",
+                sizes: ["XS", "S", "M", "L"],
+                description: "Bohemian crochet bikini set"
+            },
+            
+            // Accessories Collection
+            {
+                id: 29,
+                name: "Leather Tote Bag",
+                price: 149.99,
+                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400",
+                category: "accessories",
+                sizes: ["One Size"],
+                description: "Genuine leather tote bag"
+            },
+            {
+                id: 30,
+                name: "Statement Earrings",
+                price: 39.99,
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400",
+                category: "accessories",
+                sizes: ["One Size"],
+                description: "Bold earrings to complete your look"
+            },
+            {
+                id: 31,
+                name: "Silk Scarf",
+                price: 45.99,
+                image: "silk_scarf.png",
+                category: "accessories",
+                sizes: ["One Size"],
+                description: "Luxurious silk scarf accessory"
+            },
+            {
+                id: 32,
+                name: "Designer Belt",
+                price: 59.99,
+                image: "designer_belt.png",
+                category: "accessories",
+                sizes: ["S", "M", "L"],
+                description: "Elegant designer belt"
+            }
+        ];
+
+        let currentCategory = 'all';
+        let currentSize = 'all';
+        let currentPriceRange = 'all';
+
+        // Cart functions
+        function getCart() {
+            const cart = localStorage.getItem('cart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountElements = document.querySelectorAll('#cartCount');
+            cartCountElements.forEach(el => {
+                if (el) el.textContent = totalItems;
+            });
+        }
+
+       function addToCart(productId, selectedSize) {
+    const cart = getCart();
+    const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) {
+        console.error('Product not found');
+        return;
+    }
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            size: selectedSize,
+            quantity: 1
+        });
+    }
+    
+    saveCart(cart);
+    
+    // Show a nice notification instead of alert
+    showNotification(`${product.name} (Size: ${selectedSize}) added to cart!`);
+}
+
+// Add this notification function for better UX
+function showNotification(message) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>${message}</span>
+    `;
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Remove notification after 2 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 2000);
+}
+
+        // Filter products
+        function filterProducts() {
+            let filtered = products;
+            
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(product => product.category === currentCategory);
+            }
+            
+            // Filter by size
+            if (currentSize !== 'all') {
+                filtered = filtered.filter(product => product.sizes.includes(currentSize));
+            }
+            
+            // Filter by price
+            if (currentPriceRange !== 'all') {
+                const [min, max] = currentPriceRange.split('-').map(Number);
+                filtered = filtered.filter(product => product.price >= min && product.price <= max);
+            }
+            
+            return filtered;
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'dresses': 'Dresses',
+                'tops': 'Tops',
+                'bottoms': 'Bottoms',
+                'outerwear': 'Outerwear',
+                'lingerie': 'Lingerie',
+                'underwear': 'Underwear',
+                'beachwear': 'Beach Wear',
+                'accessories': 'Accessories'
+            };
+            return names[category] || category;
+        }
+// Render products
+function renderProducts() {
+    const filteredProducts = filterProducts();
+    const productsGrid = document.getElementById('productsGrid');
+    const productCount = document.getElementById('productCount');
+    
+    if (!productsGrid) return;
+    
+    if (filteredProducts.length === 0) {
+        productsGrid.innerHTML = `
+            <div class="no-products">
+                <i class="fas fa-tshirt"></i>
+                <p>No products found matching your filters.</p>
+                <button onclick="clearAllFilters()" class="clear-filters-btn">Clear Filters</button>
+            </div>
+        `;
+        productCount.textContent = `Showing 0 products`;
+        return;
+    }
+    
+    productsGrid.innerHTML = filteredProducts.map(product => `
+        <div class="product-card" data-product-id="${product.id}">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-badge">${getCategoryName(product.category)}</div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-price">$${product.price}</p>
+                <div class="product-sizes">
+                    <label>Size:</label>
+                    <select class="size-select" id="size-${product.id}">
+                        ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                    </select>
+                </div>
+                <button class="add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
+            </div>
+        </div>
+    `).join('');
+    
+    productCount.textContent = `Showing ${filteredProducts.length} products`;
+    
+    // Add event listeners to all Add to Cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-id'));
+            const sizeSelect = document.getElementById(`size-${productId}`);
+            const selectedSize = sizeSelect ? sizeSelect.value : 'M';
+            addToCart(productId, selectedSize);
+        });
+    });
+}
+
+        // Clear all filters
+        function clearAllFilters() {
+            currentCategory = 'all';
+            currentSize = 'all';
+            currentPriceRange = 'all';
+            
+            document.getElementById('sizeFilter').value = 'all';
+            document.getElementById('priceFilter').value = 'all';
+            
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-category') === 'all') {
+                    link.classList.add('active');
+                }
+            });
+            
+            renderProducts();
+        }
+
+        // Check authentication
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Display user name
+        function displayUserInfo() {
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            if (userName && userEmail !== 'guest@luxe.com') {
+                const userBtn = document.getElementById('userBtn');
+                if (userBtn) {
+                    userBtn.innerHTML = `<i class="fas fa-user"></i><span class="user-name">${userName.split(' ')[0]}</span>`;
+                }
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            renderProducts();
+            updateCartCount();
+            displayUserInfo();
+            
+            // Category navigation
+            document.querySelectorAll('.main-nav a, .category-card, .footer-section a[data-category]').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const category = element.getAttribute('data-category');
+                    if (category) {
+                        currentCategory = category;
+                        currentSize = 'all';
+                        currentPriceRange = 'all';
+                        
+                        document.getElementById('sizeFilter').value = 'all';
+                        document.getElementById('priceFilter').value = 'all';
+                        
+                        document.querySelectorAll('.main-nav a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        document.querySelector(`.main-nav a[data-category="${category}"]`)?.classList.add('active');
+                        
+                        renderProducts();
+                        document.querySelector('.featured-section').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Size filter
+            document.getElementById('sizeFilter').addEventListener('change', (e) => {
+                currentSize = e.target.value;
+                renderProducts();
+            });
+            
+            // Price filter
+            document.getElementById('priceFilter').addEventListener('change', (e) => {
+                currentPriceRange = e.target.value;
+                renderProducts();
+            });
+            
+            // Clear filters
+            document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+            
+            // Shop now button
+            document.querySelector('.shop-now-btn')?.addEventListener('click', () => {
+                document.querySelector('.featured-section')?.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Category buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = btn.closest('.category-card');
+                    const category = card.getAttribute('data-category');
+                    if (category) {
+                        currentCategory = category;
+                        currentSize = 'all';
+                        currentPriceRange = 'all';
+                        renderProducts();
+                        document.querySelector('.featured-section').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Search button
+            document.getElementById('searchBtn')?.addEventListener('click', () => {
+                const searchTerm = prompt('Search for products:');
+                if (searchTerm) {
+                    const filtered = products.filter(p => 
+                        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        p.description.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+                    if (filtered.length > 0) {
+                        alert(`Found ${filtered.length} products matching "${searchTerm}"`);
+                    } else {
+                        alert('No products found matching your search.');
+                    }
+                }
+            });
+            
+            // Cart button
+            document.getElementById('cartBtn')?.addEventListener('click', () => {
+                window.location.href = 'cart.html';
+            });
+            
+            // User button
+            document.getElementById('userBtn')?.addEventListener('click', () => {
+                const userEmail = localStorage.getItem('userEmail');
+                if (confirm(`Logged in as: ${userEmail}\n\nLogout?`)) {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userName');
+                    localStorage.removeItem('cart');
+                    window.location.href = 'login.html';
+                }
+            });
+            
+            // Newsletter form
+            document.querySelector('.newsletter-form')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input').value;
+                if (email) {
+                    alert(`Thanks for subscribing! 10% off code sent to ${email}`);
+                    e.target.reset();
+                }
+            });
+        });
+        
+        // Make functions global
+        window.addToCart = addToCart;
+        window.clearAllFilters = clearAllFilters;
+
+        // Format price in PHP
+            function formatPrice(price) {
+                return '₱' + price.toLocaleString('en-PH');
+            }
+    </script>
+</body>
+</html>
